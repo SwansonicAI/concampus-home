@@ -5,87 +5,129 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ConCampus – Hochschulverwaltung für Musikhochschulen</title>
 <meta name="description" content="Ein einheitliches System für die Verwaltung von Musikhochschulen: sicher, stabil, schnell, zuverlässig und bezahlbar.">
+<meta name="theme-color" content="#161616">
+<link rel="preload" href="fonts/cormorant-garamond-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-garamond-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* The Campus app's design language; ruby is ConCampus's own colour, as green is HfM's in the app */
+/* Night and ivory, a serif for display, ruby only as an accent. Fonts are self-hosted so no visitor data goes to Google. */
+@font-face { font-family: "Cormorant Garamond"; font-weight: 400; font-display: swap; src: url(fonts/cormorant-garamond-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-weight: 400; font-style: italic; font-display: swap; src: url(fonts/cormorant-garamond-400-italic.woff2) format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-weight: 500; font-display: swap; src: url(fonts/cormorant-garamond-500-normal.woff2) format("woff2"); }
 :root {
-  --ink: #000;
-  --ruby: #9b111e;
+  --ink: #161616;
   --muted: #5f5f5f;
-  --line: #d6d6d6;
-  --wide: 1360px;
+  --pale: #b8b8b8;
+  --ivory: #f6f3ee;
+  --line: #ddd7ce;
+  --ruby: #9b111e;
+  --serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --wide: 1240px;
 }
 * { box-sizing: border-box; }
-html { -webkit-font-smoothing: antialiased; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 body {
   margin: 0;
+  border-top: 3px solid var(--ruby);
   background: #fff;
   color: var(--ink);
-  font: 16px/1.55 "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.6 "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, sans-serif;
 }
 p { margin: 0 0 1em; }
-a { color: var(--ruby); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.wrap { width: 100%; max-width: var(--wide); margin: 0 auto; padding: 0 48px; }
-h1, h2 {
-  display: inline-block;
-  margin: 0 0 24px;
-  padding-top: 10px;
-  border-top: 6px solid var(--ruby);
-  font-family: "SF Pro Display", -apple-system, "Segoe UI Variable Display", "Segoe UI", sans-serif;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-h1 { font-size: 40px; line-height: 1.15; }
-h2 { font-size: 21px; line-height: 1.25; border-top-width: 4px; margin-bottom: 18px; font-weight: 500; }
-h3 { margin: 0 0 8px; color: var(--ruby); font-size: 17px; font-weight: 700; }
-.lead { max-width: 760px; margin: -8px 0 0; color: var(--muted); font-size: 19px; }
-section { margin-top: 64px; }
-.text { max-width: 760px; }
-.appbar { background: #161616; color: #fff; }
-.appbar .wrap { display: flex; align-items: center; min-height: 64px; }
-.name { font-size: 22px; font-weight: 300; letter-spacing: 0.01em; }
-main.wrap { padding-top: 72px; padding-bottom: 96px; }
-.qualities { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 48px; }
-.qualities div { padding-top: 14px; border-top: 1px solid var(--line); }
-.foot { border-top: 1px solid var(--line); padding: 18px 0; color: var(--muted); font-size: 13px; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 400; }
+h1 { max-width: 12em; margin-bottom: 36px; font-size: clamp(46px, 7vw, 92px); line-height: 1.02; letter-spacing: -0.01em; }
+h2 { margin-bottom: 28px; font-size: clamp(34px, 4vw, 52px); line-height: 1.1; }
+h3 { margin-bottom: 12px; font-size: 28px; font-weight: 500; line-height: 1.2; }
+.wrap { width: 100%; max-width: var(--wide); margin: 0 auto; padding-inline: 48px; }
+.eyebrow { margin-bottom: 22px; color: var(--ruby); font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+.eyebrow::before { content: ""; display: inline-block; width: 32px; height: 1px; margin-right: 14px; background: var(--ruby); vertical-align: middle; }
+.dark { background: var(--ink); color: #fff; }
+.dark .eyebrow { color: var(--pale); }
+
+.bar { display: flex; align-items: center; justify-content: space-between; min-height: 88px; border-bottom: 1px solid #2a2a2a; }
+.mark { font: 500 20px var(--serif); letter-spacing: 0.3em; text-transform: uppercase; }
+.bar a { color: var(--pale); font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; transition: color 0.2s; }
+.bar a:hover { color: #fff; }
+.intro { padding-top: 128px; padding-bottom: 144px; }
+.lead { max-width: 640px; color: var(--pale); font-size: 20px; }
+.button { display: inline-block; margin-top: 36px; padding: 16px 34px; border: 1px solid #5a5a5a; font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; transition: background-color 0.2s, border-color 0.2s; }
+.button:hover { border-color: var(--ruby); background: var(--ruby); }
+
+.split { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; padding-top: 144px; padding-bottom: 144px; }
+.split p { color: #333; font-size: 19px; line-height: 1.7; }
+.split .claim { margin-top: 36px; color: var(--ink); font: italic 400 32px/1.3 var(--serif); }
+.band { padding: 144px 0; background: var(--ivory); }
+.qualities { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 64px; margin-top: 40px; }
+.qualities div { padding-top: 28px; border-top: 1px solid var(--line); }
+.qualities p { color: var(--muted); }
+.contact { padding-top: 144px; padding-bottom: 128px; }
+.contact a { font-family: var(--serif); font-size: clamp(30px, 4.5vw, 56px); text-decoration: underline 1px var(--ruby); text-underline-offset: 0.18em; transition: text-decoration-color 0.2s; }
+.contact a:hover { text-decoration-color: #fff; }
+.foot { margin: 0; padding: 28px 0; border-top: 1px solid #2a2a2a; color: #7a7a7a; font-size: 12px; letter-spacing: 0.12em; }
+
 @media (max-width: 1100px) { .qualities { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 700px) {
-  .wrap { padding: 0 16px; }
-  h1 { font-size: 30px; }
-  main.wrap { padding-top: 40px; padding-bottom: 64px; }
-  .qualities { grid-template-columns: 1fr; }
+@media (max-width: 800px) {
+  .wrap { padding-inline: 16px; }
+  .bar { min-height: 72px; }
+  .mark { font-size: 17px; letter-spacing: 0.24em; }
+  .intro { padding-top: 72px; padding-bottom: 96px; }
+  .lead { font-size: 18px; }
+  .split { grid-template-columns: 1fr; gap: 0; padding-top: 96px; padding-bottom: 96px; }
+  .band { padding: 96px 0; }
+  .qualities { grid-template-columns: 1fr; gap: 40px; }
+  .contact { padding-top: 96px; padding-bottom: 88px; }
 }
 </style>
 </head>
 <body>
-<header class="appbar"><div class="wrap"><span class="name">ConCampus</span></div></header>
-<main class="wrap">
-  <h1>Ein System für die ganze Musikhochschule</h1>
-  <p class="lead">ConCampus vereint Bewerbung, Studierendenverwaltung, Studienpläne, Lehre, Prüfungen, Räume und Instrumente in einem System – unter dem Namen und im Erscheinungsbild Ihrer Hochschule.</p>
+<header class="dark">
+  <nav class="wrap bar">
+    <span class="mark">ConCampus</span>
+    <a href="#anfragen">Anfragen</a>
+  </nav>
+  <div class="wrap intro">
+    <p class="eyebrow">Hochschulverwaltung für Musikhochschulen</p>
+    <h1>Ein System für die <em>ganze</em> Musikhochschule</h1>
+    <p class="lead">ConCampus vereint Bewerbung, Studierendenverwaltung, Studienpläne, Lehre, Prüfungen, Räume und Instrumente in einem System – unter dem Namen und im Erscheinungsbild Ihrer Hochschule.</p>
+    <a class="button" href="mailto:anfrage@concampus.de">Anfrage stellen</a>
+  </div>
+</header>
 
-  <section class="text">
-    <h2>Weniger Systeme, weniger Kosten</h2>
-    <p>Die Verwaltung einer Hochschule verteilt sich meist auf viele Programme, die einzeln gepflegt, bezahlt und miteinander verbunden werden müssen. ConCampus ersetzt sie durch ein einziges System, gebaut für Musikhochschulen, von der Aufnahmeprüfung bis zum Abschluss.</p>
-    <p>Weniger Komplexität heißt weniger Fehler, weniger Aufwand und geringere Kosten.</p>
-  </section>
-
-  <section>
-    <h2>Was ConCampus ausmacht</h2>
-    <div class="qualities">
-      <div><h3>Einheitlich</h3><p>Ein System, eine Anmeldung, ein Datenbestand. Nichts wird doppelt gepflegt.</p></div>
-      <div><h3>Sicher</h3><p>Verschlüsselte Verbindungen, Zugriff nur für Berechtigte, Betrieb in Deutschland.</p></div>
-      <div><h3>Stabil</h3><p>Schlanke, bewährte Technik statt eines Flickwerks aus Schnittstellen.</p></div>
-      <div><h3>Schnell</h3><p>Jede Aufgabe in wenigen Schritten, jede Seite sofort da.</p></div>
-      <div><h3>Zuverlässig</h3><p>Die Regeln Ihrer Studien- und Prüfungsordnungen sind im System hinterlegt und werden eingehalten.</p></div>
-      <div><h3>Bezahlbar</h3><p>Ein System statt vieler Lizenzen, Schnittstellen und Dienstleister.</p></div>
+<main>
+  <section class="wrap split">
+    <div>
+      <p class="eyebrow">Das Prinzip</p>
+      <h2>Weniger Systeme, weniger Kosten</h2>
+    </div>
+    <div>
+      <p>Die Verwaltung einer Hochschule verteilt sich meist auf viele Programme, die einzeln gepflegt, bezahlt und miteinander verbunden werden müssen. ConCampus ersetzt sie durch ein einziges System, gebaut für Musikhochschulen, von der Aufnahmeprüfung bis zum Abschluss.</p>
+      <p class="claim">Weniger Komplexität heißt weniger Fehler, weniger Aufwand und geringere Kosten.</p>
     </div>
   </section>
 
-  <section class="text">
-    <h2>Anfragen</h2>
-    <p>Sie möchten ConCampus für Ihre Hochschule kennenlernen? Schreiben Sie uns an <a href="mailto:anfrage@concampus.de">anfrage@concampus.de</a>.</p>
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Eigenschaften</p>
+      <h2>Was ConCampus ausmacht</h2>
+      <div class="qualities">
+        <div><h3>Einheitlich</h3><p>Ein System, eine Anmeldung, ein Datenbestand. Nichts wird doppelt gepflegt.</p></div>
+        <div><h3>Sicher</h3><p>Verschlüsselte Verbindungen, Zugriff nur für Berechtigte, Betrieb in Deutschland.</p></div>
+        <div><h3>Stabil</h3><p>Schlanke, bewährte Technik statt eines Flickwerks aus Schnittstellen.</p></div>
+        <div><h3>Schnell</h3><p>Jede Aufgabe in wenigen Schritten, jede Seite sofort da.</p></div>
+        <div><h3>Zuverlässig</h3><p>Die Regeln Ihrer Studien- und Prüfungsordnungen sind im System hinterlegt und werden eingehalten.</p></div>
+        <div><h3>Bezahlbar</h3><p>Ein System statt vieler Lizenzen, Schnittstellen und Dienstleister.</p></div>
+      </div>
+    </div>
   </section>
 </main>
-<footer class="foot"><div class="wrap">© 2026 ConCampus</div></footer>
+
+<footer class="dark">
+  <section class="wrap contact" id="anfragen">
+    <p class="eyebrow">Anfragen</p>
+    <h2>Lernen Sie ConCampus kennen</h2>
+    <a href="mailto:anfrage@concampus.de">anfrage@concampus.de</a>
+  </section>
+  <div class="wrap"><p class="foot">© 2026 ConCampus</p></div>
+</footer>
 </body>
 </html>
