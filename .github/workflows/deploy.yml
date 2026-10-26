@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+env:
+  SERVER: 46.224.56.49
+  SERVER_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKW8bQN5tMkWkFrmRXH3lnxoEkcsjnvIt2l39n5OPFme  # so nothing else can pose as the server
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency: deploy
+    steps:
+      - name: Pull on the server  # the key may do nothing else there; Caddy serves public/ as it is
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_ed25519 && chmod 600 ~/.ssh/id_ed25519  # pasted into a browser, it may carry Windows line ends
+          echo "$SERVER $SERVER_KEY" > ~/.ssh/known_hosts
+          ssh -T deploy@$SERVER

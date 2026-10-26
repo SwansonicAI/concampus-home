@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ConCampus – Hochschulverwaltung für Musikhochschulen</title>
+<meta name="description" content="Ein einheitliches System für die Verwaltung von Musikhochschulen: sicher, stabil, schnell, zuverlässig und bezahlbar.">
+<style>
+/* The Campus app's design language without a house colour: each Hochschule brings its own */
+:root {
+  --ink: #000;
+  --muted: #5f5f5f;
+  --line: #d6d6d6;
+  --wide: 1360px;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font: 16px/1.55 "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", Roboto, sans-serif;
+}
+p { margin: 0 0 1em; }
+.wrap { width: 100%; max-width: var(--wide); margin: 0 auto; padding: 0 48px; }
+h1, h2 {
+  display: inline-block;
+  margin: 0 0 24px;
+  padding-top: 10px;
+  border-top: 6px solid var(--ink);
+  font-family: "SF Pro Display", -apple-system, "Segoe UI Variable Display", "Segoe UI", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 40px; line-height: 1.15; }
+h2 { font-size: 21px; line-height: 1.25; border-top-width: 4px; margin-bottom: 18px; font-weight: 500; }
+h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; }
+.lead { max-width: 760px; margin: -8px 0 0; color: var(--muted); font-size: 19px; }
+section { margin-top: 64px; }
+.text { max-width: 760px; }
+.appbar { background: #161616; color: #fff; }
+.appbar .wrap { display: flex; align-items: center; min-height: 64px; }
+.name { font-size: 22px; font-weight: 300; letter-spacing: 0.01em; }
+main { padding-top: 72px; padding-bottom: 96px; }
+.qualities { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 48px; }
+.qualities div { padding-top: 14px; border-top: 1px solid var(--line); }
+.foot { border-top: 1px solid var(--line); padding: 18px 0; color: var(--muted); font-size: 13px; }
+@media (max-width: 1100px) { .qualities { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) {
+  .wrap { padding: 0 16px; }
+  h1 { font-size: 30px; }
+  main { padding-top: 40px; padding-bottom: 64px; }
+  .qualities { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="appbar"><div class="wrap"><span class="name">ConCampus</span></div></header>
+<main class="wrap">
+  <h1>Ein System für die ganze Musikhochschule</h1>
+  <p class="lead">ConCampus vereint Bewerbung, Studierendenverwaltung, Studienpläne, Lehre, Prüfungen, Räume und Instrumente in einem System – unter dem Namen und im Erscheinungsbild Ihrer Hochschule.</p>
+
+  <section class="text">
+    <h2>Weniger Systeme, weniger Kosten</h2>
+    <p>Die Verwaltung einer Hochschule verteilt sich meist auf viele Programme, die einzeln gepflegt, bezahlt und miteinander verbunden werden müssen. ConCampus ersetzt sie durch ein einziges System, gebaut für Musikhochschulen, von der Aufnahmeprüfung bis zum Abschluss.</p>
+    <p>Weniger Komplexität heißt weniger Fehler, weniger Aufwand und geringere Kosten.</p>
+  </section>
+
+  <section>
+    <h2>Was ConCampus ausmacht</h2>
+    <div class="qualities">
+      <div><h3>Einheitlich</h3><p>Ein System, eine Anmeldung, ein Datenbestand. Nichts wird doppelt gepflegt.</p></div>
+      <div><h3>Sicher</h3><p>Verschlüsselte Verbindungen, Zugriff nur für Berechtigte, Betrieb in Deutschland.</p></div>
+      <div><h3>Stabil</h3><p>Schlanke, bewährte Technik statt eines Flickwerks aus Schnittstellen.</p></div>
+      <div><h3>Schnell</h3><p>Jede Aufgabe in wenigen Schritten, jede Seite sofort da.</p></div>
+      <div><h3>Zuverlässig</h3><p>Die Regeln Ihrer Studien- und Prüfungsordnungen sind im System hinterlegt und werden eingehalten.</p></div>
+      <div><h3>Bezahlbar</h3><p>Ein System statt vieler Lizenzen, Schnittstellen und Dienstleister.</p></div>
+    </div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap">© 2026 ConCampus</div></footer>
+</body>
+</html>
