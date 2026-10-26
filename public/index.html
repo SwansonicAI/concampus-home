@@ -6,9 +6,10 @@
 <title>ConCampus – Hochschulverwaltung für Musikhochschulen</title>
 <meta name="description" content="Ein einheitliches System für die Verwaltung von Musikhochschulen: sicher, stabil, schnell, zuverlässig und bezahlbar.">
 <style>
-/* The Campus app's design language without a house colour: each Hochschule brings its own */
+/* The Campus app's design language; ruby is ConCampus's own colour, as green is HfM's in the app */
 :root {
   --ink: #000;
+  --ruby: #9b111e;
   --muted: #5f5f5f;
   --line: #d6d6d6;
   --wide: 1360px;
@@ -27,14 +28,14 @@ h1, h2 {
   display: inline-block;
   margin: 0 0 24px;
   padding-top: 10px;
-  border-top: 6px solid var(--ink);
+  border-top: 6px solid var(--ruby);
   font-family: "SF Pro Display", -apple-system, "Segoe UI Variable Display", "Segoe UI", sans-serif;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 h1 { font-size: 40px; line-height: 1.15; }
 h2 { font-size: 21px; line-height: 1.25; border-top-width: 4px; margin-bottom: 18px; font-weight: 500; }
-h3 { margin: 0 0 8px; font-size: 17px; font-weight: 700; }
+h3 { margin: 0 0 8px; color: var(--ruby); font-size: 17px; font-weight: 700; }
 .lead { max-width: 760px; margin: -8px 0 0; color: var(--muted); font-size: 19px; }
 section { margin-top: 64px; }
 .text { max-width: 760px; }
